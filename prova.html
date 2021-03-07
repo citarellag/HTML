@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Prima prova su html</title>
+    <head>
+    <body>
+        <script>
+            var password = "OSIMHEN"
+            var input = prompt("Inserire password: ")
+            if (input.toUpperCase() !== password) {
+            window.location.reload(true)
+            }
+        </script>
+
+        <div>
+            <h1>Prova di HTML/JS</h1>
+            <p id="Paragrafo" draggable="true">Passa il mouse su questo paragrafo</p>
+            <p id="Paragrafo2" draggable="true">Trascina questo paragrafo su: Link</p>
+        </div>
+
+        <form name="myForm">
+            <p><label>Nome:    <input type="text" name="txtNome" required/></label></p>
+            <p><label>Cognome: <input type="text" name="txtCognome" required/></label></p>
+            <label><input type="radio" name="sx" value="M" required/>Maschio</label>
+            <label><input type="radio" name="sx" value="F" required/>Femmina</label>
+        </form>
+
+        <select name="selProvincia" multiple="multiple">
+            <option value="NA">Napoli</option>
+            <option value="RM">Roma</option>
+            <option value="TO">Torino</option>
+            <option value="MI">Milano</option>
+        </select>
+
+        <h2>Command Buttons</h2>
+        <button type="button" onclick="alert('Ciao!')">Alert</button>
+        <a href="javascript:alert('Ciao!')">Alert2</a>
+        <button type="button" onclick="confirm('Confermi?')">Confirm</button>
+        <button type='button' onclick="prompt('Inserisci il tuo nome')">Prompt</button>
+        <button type='button' onclick="open('https:/www.youtube.com/watch?v=hAq443fhyDo', 'myWindow', 'menubar=no,toolbar=no,status=no, height=400,width=600,top=150,left=150')">Open</button>
+        <a id="link" href="https://www.youtube.com/watch?v=H9aC5AGY9YU&ab_channel=Peternity">Link</a>
+        <button id="Doppio_click" type="button">Doppio click</button>
+        <button type="button" onclick="alert(document.forms.length)">Numero Form Presenti</button>
+        <button type="button" onclick="location.reload(true)">Reload</button>
+        <div id="prima_prova"></div>
+        
+        <script>
+            link.addEventListener("click", function(e) {
+                if (!confirm("Stai lasciando questa pagina. Vuoi procedere?")) {
+                    e.preventDefault();
+                }
+            });
+        </script>
+
+        <script>
+            var pulsante_dc = document.getElementById("Doppio_click");
+            pulsante_dc.ondblclick = function(e) {
+                alert("Hai fatto doppio click sul bottone!");
+            };
+        </script>
+
+        <script>
+            var Paragrafo = document.getElementById("Paragrafo");
+            Paragrafo.onmouseover = function(e) { e.target.className = "overClass"; };
+            Paragrafo.onmouseout  = function(e) { e.target.className = "outClass";  };
+        </script>
+
+        <style>
+            .overClass {font-weight: bold;   color: lightseagreen;}
+            .outClass  {font-weight: normal; color: black;}
+        </style>
+
+        <script>
+            var prg2 = document.getElementById("Paragrafo2");
+            prg2.ondragstart = function(e) {
+                e.dataTransfer.setData("text", e.target.id);
+            }
+
+            var divTarget = document.getElementById("link");
+            divTarget.ondragover = function(e) {
+                e.target.className = "overClass";
+                e.preventDefault();
+            }
+
+            divTarget.ondrop = function(e) {
+                var data = e.dataTransfer.getData("text");
+                e.target.appendChild(document.getElementById(data));
+            }
+        </script>
+
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="prova.js"></script>
+
+    </body>
+</html>
