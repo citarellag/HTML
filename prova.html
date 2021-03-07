@@ -19,11 +19,17 @@
             <p id="Paragrafo2" draggable="true">Trascina questo paragrafo su: Link</p>
         </div>
 
-        <form name="myForm">
+        <form name="Identità">
             <p><label>Nome:    <input type="text" name="txtNome" required/></label></p>
             <p><label>Cognome: <input type="text" name="txtCognome" required/></label></p>
             <label><input type="radio" name="sx" value="M" required/>Maschio</label>
             <label><input type="radio" name="sx" value="F" required/>Femmina</label>
+        </form>
+
+        <form name="Calcolo">
+            <p><label>Addendo 1: <input type="number" id="addendo1" value="" required /></label></p>
+            <p><label>Addendo 2: <input type="number" id="addendo2" value="" required /></label></p>
+            <p><button id="b_somma">Calcola</button>Totale: <span id="Totale"></span></p>
         </form>
 
         <select name="selProvincia" multiple="multiple">
@@ -44,8 +50,9 @@
         <button type="button" onclick="alert(document.forms.length)">Numero Form Presenti</button>
         <button type="button" onclick="location.reload(true)">Reload</button>
         <div id="prima_prova"></div>
-        
+                
         <script>
+            //redirecting
             link.addEventListener("click", function(e) {
                 if (!confirm("Stai lasciando questa pagina. Vuoi procedere?")) {
                     e.preventDefault();
@@ -54,6 +61,7 @@
         </script>
 
         <script>
+            //db click
             var pulsante_dc = document.getElementById("Doppio_click");
             pulsante_dc.ondblclick = function(e) {
                 alert("Hai fatto doppio click sul bottone!");
@@ -61,6 +69,7 @@
         </script>
 
         <script>
+            //mouse over
             var Paragrafo = document.getElementById("Paragrafo");
             Paragrafo.onmouseover = function(e) { e.target.className = "overClass"; };
             Paragrafo.onmouseout  = function(e) { e.target.className = "outClass";  };
@@ -72,6 +81,7 @@
         </style>
 
         <script>
+            //drag n drop
             var prg2 = document.getElementById("Paragrafo2");
             prg2.ondragstart = function(e) {
                 e.dataTransfer.setData("text", e.target.id);
@@ -87,6 +97,18 @@
                 var data = e.dataTransfer.getData("text");
                 e.target.appendChild(document.getElementById(data));
             }
+        </script>
+
+        <script>
+            //somma
+            var Calcolo = document.forms.Calcolo;
+            Calcolo.addEventListener("submit", function(e) {
+                var Totale = document.getElementById("Totale");
+                var addendo1 = document.getElementById("addendo1");
+                var addendo2 = document.getElementById("addendo2");
+                Totale.innerHTML = (addendo1.valueAsNumber + addendo2.valueAsNumber);
+                e.preventDefault();
+            });
         </script>
 
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
