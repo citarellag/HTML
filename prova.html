@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
         <meta charset="UTF-8" />
         <title>Prima prova su html</title>
@@ -50,7 +50,16 @@
         <button type="button" onclick="alert(document.forms.length)">Numero Form Presenti</button>
         <button type="button" onclick="location.reload(true)">Reload</button>
         <div id="prima_prova"></div>
-        <img src="Altro\imghtml.jpg"/>    
+        <img src="Altro\imghtml.jpg" width="150" height="150"/>
+        
+        <svg>
+            <circle id="cerchio" cx="100" cy="80" r="69" style="stroke: #000000; fill: #ffe600;" />
+            <circle id="cerchio2" cx="100" cy="80" r="40" style="stroke: #000000; fill: #ff9100;" />
+            <circle id="cerchio3" cx="100" cy="80" r="20" style="stroke: #000000; fill: #ff0000;" />
+            <circle id="cerchio4" cx="100" cy="80" r="5" style="stroke: #000000; fill: #000000;" />
+        </svg>    
+
+        <canvas id="myCanvas"></canvas>
 
         <script>
             //redirecting
@@ -110,6 +119,35 @@
                 Totale.innerHTML = (addendo1.valueAsNumber + addendo2.valueAsNumber);
                 e.preventDefault();
             });
+        </script>
+
+        <script>
+            var myCanvas = document.getElementById("myCanvas");
+            var context = myCanvas.getContext("2d");
+            context.beginPath();
+            var x = 100;
+            var y = 80;
+            function drawCircle(x, y) {
+                context.beginPath();
+                context.arc(x, y, 50, 0, 2 * Math.PI);
+                context.fillStyle = "#ff0000";
+                context.fill();
+                context.strokeStyle = "#000000";
+                context.stroke();
+            }
+            function animate() {
+                x += 2;
+                if (x > myCanvas.width) x = 20;
+                context.clearRect(0, 0, myCanvas.width, myCanvas.height);
+                drawCircle(x, y);
+            }
+            var timerId;
+            function startAnimation() {
+                if( timerId == null) {
+                            timerId = setInterval(animate, 20);
+                }
+            }
+            startAnimation();
         </script>
 
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
